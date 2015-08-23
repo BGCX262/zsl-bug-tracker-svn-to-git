@@ -1,0 +1,676 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BugTrackerEntityModels.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BugTrackerEntityModelsStoreContainer">
+          <EntitySet Name="tbl_BugCommentsMapping" EntityType="BugTrackerEntityModels.Store.tbl_BugCommentsMapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Bugs" EntityType="BugTrackerEntityModels.Store.tbl_Bugs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Comments" EntityType="BugTrackerEntityModels.Store.tbl_Comments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_ProjectBugsMapping" EntityType="BugTrackerEntityModels.Store.tbl_ProjectBugsMapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Projects" EntityType="BugTrackerEntityModels.Store.tbl_Projects" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_UserProfile" EntityType="BugTrackerEntityModels.Store.tbl_UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_UserProjectsMapping" EntityType="BugTrackerEntityModels.Store.tbl_UserProjectsMapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Users" EntityType="BugTrackerEntityModels.Store.tbl_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_UserType" EntityType="BugTrackerEntityModels.Store.tbl_UserType" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tbl_BugCommentsMapping_tbl_Bugs" Association="BugTrackerEntityModels.Store.FK_tbl_BugCommentsMapping_tbl_Bugs">
+            <End Role="tbl_Bugs" EntitySet="tbl_Bugs" />
+            <End Role="tbl_BugCommentsMapping" EntitySet="tbl_BugCommentsMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BugCommentsMapping_tbl_Comments" Association="BugTrackerEntityModels.Store.FK_tbl_BugCommentsMapping_tbl_Comments">
+            <End Role="tbl_Comments" EntitySet="tbl_Comments" />
+            <End Role="tbl_BugCommentsMapping" EntitySet="tbl_BugCommentsMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProjectBugsMapping_tbl_Bugs" Association="BugTrackerEntityModels.Store.FK_tbl_ProjectBugsMapping_tbl_Bugs">
+            <End Role="tbl_Bugs" EntitySet="tbl_Bugs" />
+            <End Role="tbl_ProjectBugsMapping" EntitySet="tbl_ProjectBugsMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProjectBugsMapping_tbl_Projects" Association="BugTrackerEntityModels.Store.FK_tbl_ProjectBugsMapping_tbl_Projects">
+            <End Role="tbl_Projects" EntitySet="tbl_Projects" />
+            <End Role="tbl_ProjectBugsMapping" EntitySet="tbl_ProjectBugsMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserProjectsMapping_tbl_Projects" Association="BugTrackerEntityModels.Store.FK_tbl_UserProjectsMapping_tbl_Projects">
+            <End Role="tbl_Projects" EntitySet="tbl_Projects" />
+            <End Role="tbl_UserProjectsMapping" EntitySet="tbl_UserProjectsMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserProjectsMapping_tbl_Users" Association="BugTrackerEntityModels.Store.FK_tbl_UserProjectsMapping_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_UserProjectsMapping" EntitySet="tbl_UserProjectsMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Users_tbl_UserProfile" Association="BugTrackerEntityModels.Store.FK_tbl_Users_tbl_UserProfile">
+            <End Role="tbl_UserProfile" EntitySet="tbl_UserProfile" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Users_tbl_UserType" Association="BugTrackerEntityModels.Store.FK_tbl_Users_tbl_UserType">
+            <End Role="tbl_UserType" EntitySet="tbl_UserType" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_BugCommentsMapping">
+          <Key>
+            <PropertyRef Name="MappingID" />
+          </Key>
+          <Property Name="MappingID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BugID" Type="uniqueidentifier" />
+          <Property Name="CommentID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="tbl_Bugs">
+          <Key>
+            <PropertyRef Name="BugID" />
+          </Key>
+          <Property Name="BugID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Screenshots" Type="varbinary(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="OpenDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ClosedDate" Type="datetime" />
+          <Property Name="Status" Type="smallint" />
+        </EntityType>
+        <EntityType Name="tbl_Comments">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="CommentDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ProjectBugsMapping">
+          <Key>
+            <PropertyRef Name="MappingID" />
+          </Key>
+          <Property Name="MappingID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProjectID" Type="uniqueidentifier" />
+          <Property Name="BugID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="tbl_Projects">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logo" Type="varbinary(max)" />
+          <Property Name="ApplicationType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_UserProfile">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Displayname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_UserProjectsMapping">
+          <Key>
+            <PropertyRef Name="MappingID" />
+          </Key>
+          <Property Name="MappingID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" />
+          <Property Name="ProjectID" Type="uniqueidentifier" />
+          <Property Name="IsMapped" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserTypeID" Type="uniqueidentifier" />
+          <Property Name="IsZsl" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_tbl_BugCommentsMapping_tbl_Bugs">
+          <End Role="tbl_Bugs" Type="BugTrackerEntityModels.Store.tbl_Bugs" Multiplicity="0..1" />
+          <End Role="tbl_BugCommentsMapping" Type="BugTrackerEntityModels.Store.tbl_BugCommentsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bugs">
+              <PropertyRef Name="BugID" />
+            </Principal>
+            <Dependent Role="tbl_BugCommentsMapping">
+              <PropertyRef Name="BugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BugCommentsMapping_tbl_Comments">
+          <End Role="tbl_Comments" Type="BugTrackerEntityModels.Store.tbl_Comments" Multiplicity="0..1" />
+          <End Role="tbl_BugCommentsMapping" Type="BugTrackerEntityModels.Store.tbl_BugCommentsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Comments">
+              <PropertyRef Name="CommentID" />
+            </Principal>
+            <Dependent Role="tbl_BugCommentsMapping">
+              <PropertyRef Name="CommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProjectBugsMapping_tbl_Bugs">
+          <End Role="tbl_Bugs" Type="BugTrackerEntityModels.Store.tbl_Bugs" Multiplicity="0..1" />
+          <End Role="tbl_ProjectBugsMapping" Type="BugTrackerEntityModels.Store.tbl_ProjectBugsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bugs">
+              <PropertyRef Name="BugID" />
+            </Principal>
+            <Dependent Role="tbl_ProjectBugsMapping">
+              <PropertyRef Name="BugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProjectBugsMapping_tbl_Projects">
+          <End Role="tbl_Projects" Type="BugTrackerEntityModels.Store.tbl_Projects" Multiplicity="0..1" />
+          <End Role="tbl_ProjectBugsMapping" Type="BugTrackerEntityModels.Store.tbl_ProjectBugsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Projects">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="tbl_ProjectBugsMapping">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserProjectsMapping_tbl_Projects">
+          <End Role="tbl_Projects" Type="BugTrackerEntityModels.Store.tbl_Projects" Multiplicity="0..1" />
+          <End Role="tbl_UserProjectsMapping" Type="BugTrackerEntityModels.Store.tbl_UserProjectsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Projects">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="tbl_UserProjectsMapping">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserProjectsMapping_tbl_Users">
+          <End Role="tbl_Users" Type="BugTrackerEntityModels.Store.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_UserProjectsMapping" Type="BugTrackerEntityModels.Store.tbl_UserProjectsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_UserProjectsMapping">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Users_tbl_UserProfile">
+          <End Role="tbl_UserProfile" Type="BugTrackerEntityModels.Store.tbl_UserProfile" Multiplicity="1" />
+          <End Role="tbl_Users" Type="BugTrackerEntityModels.Store.tbl_Users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserProfile">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Users_tbl_UserType">
+          <End Role="tbl_UserType" Type="BugTrackerEntityModels.Store.tbl_UserType" Multiplicity="0..1" />
+          <End Role="tbl_Users" Type="BugTrackerEntityModels.Store.tbl_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BugTrackerEntityModels" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BugTrackerEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="tbl_Users" EntityType="BugTrackerEntityModels.tbl_Users" />
+          <EntitySet Name="tbl_Bugs" EntityType="BugTrackerEntityModels.tbl_Bugs" />
+          <EntitySet Name="tbl_Comments" EntityType="BugTrackerEntityModels.tbl_Comments" />
+          <EntitySet Name="tbl_Projects" EntityType="BugTrackerEntityModels.tbl_Projects" />
+          <EntitySet Name="tbl_UserProfile" EntityType="BugTrackerEntityModels.tbl_UserProfile" />
+          <AssociationSet Name="FK_tbl_Users_tbl_UserProfile" Association="BugTrackerEntityModels.FK_tbl_Users_tbl_UserProfile">
+            <End Role="tbl_UserProfile" EntitySet="tbl_UserProfile" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+          <EntitySet Name="tbl_ProjectBugsMapping" EntityType="BugTrackerEntityModels.tbl_ProjectBugsMapping" />
+          <EntitySet Name="tbl_UserProjectsMapping" EntityType="BugTrackerEntityModels.tbl_UserProjectsMapping" />
+          <AssociationSet Name="FK_tbl_ProjectBugsMapping_tbl_Bugs" Association="BugTrackerEntityModels.FK_tbl_ProjectBugsMapping_tbl_Bugs">
+            <End Role="tbl_Bugs" EntitySet="tbl_Bugs" />
+            <End Role="tbl_ProjectBugsMapping" EntitySet="tbl_ProjectBugsMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProjectBugsMapping_tbl_Projects" Association="BugTrackerEntityModels.FK_tbl_ProjectBugsMapping_tbl_Projects">
+            <End Role="tbl_Projects" EntitySet="tbl_Projects" />
+            <End Role="tbl_ProjectBugsMapping" EntitySet="tbl_ProjectBugsMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserProjectsMapping_tbl_Projects" Association="BugTrackerEntityModels.FK_tbl_UserProjectsMapping_tbl_Projects">
+            <End Role="tbl_Projects" EntitySet="tbl_Projects" />
+            <End Role="tbl_UserProjectsMapping" EntitySet="tbl_UserProjectsMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserProjectsMapping_tbl_Users" Association="BugTrackerEntityModels.FK_tbl_UserProjectsMapping_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_UserProjectsMapping" EntitySet="tbl_UserProjectsMapping" />
+          </AssociationSet>
+          <EntitySet Name="tbl_BugCommentsMapping" EntityType="BugTrackerEntityModels.tbl_BugCommentsMapping" />
+          <AssociationSet Name="FK_tbl_BugCommentsMapping_tbl_Bugs" Association="BugTrackerEntityModels.FK_tbl_BugCommentsMapping_tbl_Bugs">
+            <End Role="tbl_Bugs" EntitySet="tbl_Bugs" />
+            <End Role="tbl_BugCommentsMapping" EntitySet="tbl_BugCommentsMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BugCommentsMapping_tbl_Comments" Association="BugTrackerEntityModels.FK_tbl_BugCommentsMapping_tbl_Comments">
+            <End Role="tbl_Comments" EntitySet="tbl_Comments" />
+            <End Role="tbl_BugCommentsMapping" EntitySet="tbl_BugCommentsMapping" />
+          </AssociationSet>
+          <EntitySet Name="tbl_UserType" EntityType="BugTrackerEntityModels.tbl_UserType" />
+          <AssociationSet Name="FK_tbl_Users_tbl_UserType" Association="BugTrackerEntityModels.FK_tbl_Users_tbl_UserType">
+            <End Role="tbl_UserType" EntitySet="tbl_UserType" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Guid" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Username" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsZsl" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="CreationDate" />
+          <Property Type="DateTime" Name="ModifiedDate" />
+          <NavigationProperty Name="tbl_UserProfile" Relationship="BugTrackerEntityModels.FK_tbl_Users_tbl_UserProfile" FromRole="tbl_Users" ToRole="tbl_UserProfile" />
+          <NavigationProperty Name="tbl_UserProjectsMapping" Relationship="BugTrackerEntityModels.FK_tbl_UserProjectsMapping_tbl_Users" FromRole="tbl_Users" ToRole="tbl_UserProjectsMapping" />
+          <Property Type="Guid" Name="UserTypeID" />
+          <NavigationProperty Name="tbl_UserType" Relationship="BugTrackerEntityModels.FK_tbl_Users_tbl_UserType" FromRole="tbl_Users" ToRole="tbl_UserType" />
+        </EntityType>
+        <EntityType Name="tbl_Bugs">
+          <Key>
+            <PropertyRef Name="BugID" />
+          </Key>
+          <Property Type="Guid" Name="BugID" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="Screenshots" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="OpenDate" />
+          <Property Type="DateTime" Name="ModifiedDate" />
+          <Property Type="DateTime" Name="ClosedDate" />
+          <Property Type="Int16" Name="Status" />
+          <NavigationProperty Name="tbl_ProjectBugsMapping" Relationship="BugTrackerEntityModels.FK_tbl_ProjectBugsMapping_tbl_Bugs" FromRole="tbl_Bugs" ToRole="tbl_ProjectBugsMapping" />
+          <NavigationProperty Name="tbl_BugCommentsMapping" Relationship="BugTrackerEntityModels.FK_tbl_BugCommentsMapping_tbl_Bugs" FromRole="tbl_Bugs" ToRole="tbl_BugCommentsMapping" />
+        </EntityType>
+        <EntityType Name="tbl_Comments">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Type="Guid" Name="CommentID" Nullable="false" />
+          <Property Type="String" Name="Comment" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CommentDate" />
+          <NavigationProperty Name="tbl_BugCommentsMapping" Relationship="BugTrackerEntityModels.FK_tbl_BugCommentsMapping_tbl_Comments" FromRole="tbl_Comments" ToRole="tbl_BugCommentsMapping" />
+        </EntityType>
+        <EntityType Name="tbl_Projects">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Type="Guid" Name="ProjectID" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="Logo" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="ApplicationType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="StartDate" />
+          <Property Type="DateTime" Name="EndDate" />
+          <NavigationProperty Name="tbl_ProjectBugsMapping" Relationship="BugTrackerEntityModels.FK_tbl_ProjectBugsMapping_tbl_Projects" FromRole="tbl_Projects" ToRole="tbl_ProjectBugsMapping" />
+          <NavigationProperty Name="tbl_UserProjectsMapping" Relationship="BugTrackerEntityModels.FK_tbl_UserProjectsMapping_tbl_Projects" FromRole="tbl_Projects" ToRole="tbl_UserProjectsMapping" />
+        </EntityType>
+        <EntityType Name="tbl_UserProfile">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Guid" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Firstname" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Lastname" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Displayname" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreationDate" />
+          <Property Type="DateTime" Name="ModifiedDate" />
+          <NavigationProperty Name="tbl_Users" Relationship="BugTrackerEntityModels.FK_tbl_Users_tbl_UserProfile" FromRole="tbl_UserProfile" ToRole="tbl_Users" />
+        </EntityType>
+        <Association Name="FK_tbl_Users_tbl_UserProfile">
+          <End Type="BugTrackerEntityModels.tbl_UserProfile" Role="tbl_UserProfile" Multiplicity="1" />
+          <End Type="BugTrackerEntityModels.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserProfile">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_ProjectBugsMapping">
+          <Key>
+            <PropertyRef Name="MappingID" />
+          </Key>
+          <Property Type="Guid" Name="MappingID" Nullable="false" />
+          <Property Type="Guid" Name="ProjectID" />
+          <Property Type="Guid" Name="BugID" />
+          <NavigationProperty Name="tbl_Bugs" Relationship="BugTrackerEntityModels.FK_tbl_ProjectBugsMapping_tbl_Bugs" FromRole="tbl_ProjectBugsMapping" ToRole="tbl_Bugs" />
+          <NavigationProperty Name="tbl_Projects" Relationship="BugTrackerEntityModels.FK_tbl_ProjectBugsMapping_tbl_Projects" FromRole="tbl_ProjectBugsMapping" ToRole="tbl_Projects" />
+        </EntityType>
+        <EntityType Name="tbl_UserProjectsMapping">
+          <Key>
+            <PropertyRef Name="MappingID" />
+          </Key>
+          <Property Type="Guid" Name="MappingID" Nullable="false" />
+          <Property Type="Guid" Name="UserID" />
+          <Property Type="Guid" Name="ProjectID" />
+          <Property Type="Boolean" Name="IsMapped" />
+          <NavigationProperty Name="tbl_Projects" Relationship="BugTrackerEntityModels.FK_tbl_UserProjectsMapping_tbl_Projects" FromRole="tbl_UserProjectsMapping" ToRole="tbl_Projects" />
+          <NavigationProperty Name="tbl_Users" Relationship="BugTrackerEntityModels.FK_tbl_UserProjectsMapping_tbl_Users" FromRole="tbl_UserProjectsMapping" ToRole="tbl_Users" />
+        </EntityType>
+        <Association Name="FK_tbl_ProjectBugsMapping_tbl_Bugs">
+          <End Type="BugTrackerEntityModels.tbl_Bugs" Role="tbl_Bugs" Multiplicity="0..1" />
+          <End Type="BugTrackerEntityModels.tbl_ProjectBugsMapping" Role="tbl_ProjectBugsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bugs">
+              <PropertyRef Name="BugID" />
+            </Principal>
+            <Dependent Role="tbl_ProjectBugsMapping">
+              <PropertyRef Name="BugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ProjectBugsMapping_tbl_Projects">
+          <End Type="BugTrackerEntityModels.tbl_Projects" Role="tbl_Projects" Multiplicity="0..1" />
+          <End Type="BugTrackerEntityModels.tbl_ProjectBugsMapping" Role="tbl_ProjectBugsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Projects">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="tbl_ProjectBugsMapping">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserProjectsMapping_tbl_Projects">
+          <End Type="BugTrackerEntityModels.tbl_Projects" Role="tbl_Projects" Multiplicity="0..1" />
+          <End Type="BugTrackerEntityModels.tbl_UserProjectsMapping" Role="tbl_UserProjectsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Projects">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="tbl_UserProjectsMapping">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserProjectsMapping_tbl_Users">
+          <End Type="BugTrackerEntityModels.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="BugTrackerEntityModels.tbl_UserProjectsMapping" Role="tbl_UserProjectsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_UserProjectsMapping">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_BugCommentsMapping">
+          <Key>
+            <PropertyRef Name="MappingID" />
+          </Key>
+          <Property Type="Guid" Name="MappingID" Nullable="false" />
+          <Property Type="Guid" Name="BugID" />
+          <Property Type="Guid" Name="CommentID" />
+          <NavigationProperty Name="tbl_Bugs" Relationship="BugTrackerEntityModels.FK_tbl_BugCommentsMapping_tbl_Bugs" FromRole="tbl_BugCommentsMapping" ToRole="tbl_Bugs" />
+          <NavigationProperty Name="tbl_Comments" Relationship="BugTrackerEntityModels.FK_tbl_BugCommentsMapping_tbl_Comments" FromRole="tbl_BugCommentsMapping" ToRole="tbl_Comments" />
+        </EntityType>
+        <Association Name="FK_tbl_BugCommentsMapping_tbl_Bugs">
+          <End Type="BugTrackerEntityModels.tbl_Bugs" Role="tbl_Bugs" Multiplicity="0..1" />
+          <End Type="BugTrackerEntityModels.tbl_BugCommentsMapping" Role="tbl_BugCommentsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bugs">
+              <PropertyRef Name="BugID" />
+            </Principal>
+            <Dependent Role="tbl_BugCommentsMapping">
+              <PropertyRef Name="BugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BugCommentsMapping_tbl_Comments">
+          <End Type="BugTrackerEntityModels.tbl_Comments" Role="tbl_Comments" Multiplicity="0..1" />
+          <End Type="BugTrackerEntityModels.tbl_BugCommentsMapping" Role="tbl_BugCommentsMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Comments">
+              <PropertyRef Name="CommentID" />
+            </Principal>
+            <Dependent Role="tbl_BugCommentsMapping">
+              <PropertyRef Name="CommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Type="Guid" Name="UserTypeID" Nullable="false" />
+          <Property Type="String" Name="TypeName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Users" Relationship="BugTrackerEntityModels.FK_tbl_Users_tbl_UserType" FromRole="tbl_UserType" ToRole="tbl_Users" />
+        </EntityType>
+        <Association Name="FK_tbl_Users_tbl_UserType">
+          <End Type="BugTrackerEntityModels.tbl_UserType" Role="tbl_UserType" Multiplicity="0..1" />
+          <End Type="BugTrackerEntityModels.tbl_Users" Role="tbl_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BugTrackerEntityModelsStoreContainer" CdmEntityContainer="BugTrackerEntities">
+    <EntitySetMapping Name="tbl_Users">
+      <EntityTypeMapping TypeName="IsTypeOf(BugTrackerEntityModels.tbl_Users)">
+        <MappingFragment StoreEntitySet="tbl_Users">
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsZsl" ColumnName="IsZsl" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Bugs">
+      <EntityTypeMapping TypeName="IsTypeOf(BugTrackerEntityModels.tbl_Bugs)">
+        <MappingFragment StoreEntitySet="tbl_Bugs">
+          <ScalarProperty Name="BugID" ColumnName="BugID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Screenshots" ColumnName="Screenshots" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ClosedDate" ColumnName="ClosedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(BugTrackerEntityModels.tbl_Comments)">
+        <MappingFragment StoreEntitySet="tbl_Comments">
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Projects">
+      <EntityTypeMapping TypeName="IsTypeOf(BugTrackerEntityModels.tbl_Projects)">
+        <MappingFragment StoreEntitySet="tbl_Projects">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UserProfile">
+      <EntityTypeMapping TypeName="IsTypeOf(BugTrackerEntityModels.tbl_UserProfile)">
+        <MappingFragment StoreEntitySet="tbl_UserProfile">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Displayname" ColumnName="Displayname" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ProjectBugsMapping">
+      <EntityTypeMapping TypeName="IsTypeOf(BugTrackerEntityModels.tbl_ProjectBugsMapping)">
+        <MappingFragment StoreEntitySet="tbl_ProjectBugsMapping">
+          <ScalarProperty Name="MappingID" ColumnName="MappingID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="BugID" ColumnName="BugID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UserProjectsMapping">
+      <EntityTypeMapping TypeName="IsTypeOf(BugTrackerEntityModels.tbl_UserProjectsMapping)">
+        <MappingFragment StoreEntitySet="tbl_UserProjectsMapping">
+          <ScalarProperty Name="MappingID" ColumnName="MappingID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="IsMapped" ColumnName="IsMapped" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BugCommentsMapping">
+      <EntityTypeMapping TypeName="IsTypeOf(BugTrackerEntityModels.tbl_BugCommentsMapping)">
+        <MappingFragment StoreEntitySet="tbl_BugCommentsMapping">
+          <ScalarProperty Name="MappingID" ColumnName="MappingID" />
+          <ScalarProperty Name="BugID" ColumnName="BugID" />
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserType">
+            <EntityTypeMapping TypeName="BugTrackerEntityModels.tbl_UserType">
+              <MappingFragment StoreEntitySet="tbl_UserType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="BTEntity" >
+        <EntityTypeShape EntityType="BugTrackerEntityModels.tbl_Users" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5571907552083335" />
+        <EntityTypeShape EntityType="BugTrackerEntityModels.tbl_Bugs" Width="1.5" PointX="3.375" PointY="0.75" Height="2.3648893229166665" />
+        <EntityTypeShape EntityType="BugTrackerEntityModels.tbl_Comments" Width="1.5" PointX="3.375" PointY="4.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="BugTrackerEntityModels.tbl_Projects" Width="1.5" PointX="5.375" PointY="0.75" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="BugTrackerEntityModels.tbl_UserProfile" Width="1.5" PointX="0.75" PointY="4.875" Height="2.5571907552083317" />
+        <AssociationConnector Association="BugTrackerEntityModels.FK_tbl_Users_tbl_UserProfile" >
+          <ConnectorPoint PointX="1.5" PointY="4.875" />
+          <ConnectorPoint PointX="1.5" PointY="4.076396484375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BugTrackerEntityModels.tbl_ProjectBugsMapping" Width="1.5" PointX="7.625" PointY="3.75" Height="1.9802864583333331" />
+        <EntityTypeShape EntityType="BugTrackerEntityModels.tbl_UserProjectsMapping" Width="1.5" PointX="7.625" PointY="0.75" Height="2.1725878906249996" />
+        <AssociationConnector Association="BugTrackerEntityModels.FK_tbl_ProjectBugsMapping_tbl_Bugs" >
+          <ConnectorPoint PointX="4.125" PointY="3.6917936197916661" />
+          <ConnectorPoint PointX="4.125" PointY="4.5" />
+          <ConnectorPoint PointX="5.125" PointY="4.5" />
+          <ConnectorPoint PointX="5.125" PointY="5.0033047864583331" />
+          <ConnectorPoint PointX="6.947916666666667" PointY="5.0033047864583322" />
+          <ConnectorPoint PointX="7.114583333333333" PointY="5.0033047864583331" />
+          <ConnectorPoint PointX="7.625" PointY="5.0033047864583331" />
+        </AssociationConnector>
+        <AssociationConnector Association="BugTrackerEntityModels.FK_tbl_ProjectBugsMapping_tbl_Projects" >
+          <ConnectorPoint PointX="6.125" PointY="3.4994921875" />
+          <ConnectorPoint PointX="6.125" PointY="4.2138191145833321" />
+          <ConnectorPoint PointX="6.947916666666667" PointY="4.2138191145833312" />
+          <ConnectorPoint PointX="7.114583333333333" PointY="4.2138191145833321" />
+          <ConnectorPoint PointX="7.625" PointY="4.2138191145833321" />
+        </AssociationConnector>
+        <AssociationConnector Association="BugTrackerEntityModels.FK_tbl_UserProjectsMapping_tbl_Projects" >
+          <ConnectorPoint PointX="6.875" PointY="1.8362939453124998" />
+          <ConnectorPoint PointX="7.625" PointY="1.8362939453124998" />
+        </AssociationConnector>
+        <AssociationConnector Association="BugTrackerEntityModels.FK_tbl_UserProjectsMapping_tbl_Users" >
+          <ConnectorPoint PointX="2.25" PointY="0.75115284615384614" />
+          <ConnectorPoint PointX="2.6261528461538459" PointY="0.375" />
+          <ConnectorPoint PointX="7.2511528461538459" PointY="0.375" />
+          <ConnectorPoint PointX="7.6261528461538459" PointY="0.75" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BugTrackerEntityModels.tbl_BugCommentsMapping" Width="1.5" PointX="5.625" PointY="6.625" Height="1.9802864583333317" />
+        <AssociationConnector Association="BugTrackerEntityModels.FK_tbl_BugCommentsMapping_tbl_Bugs" >
+          <ConnectorPoint PointX="4.875" PointY="3.6593432617187491" />
+          <ConnectorPoint PointX="6.041666666666667" PointY="3.6593432617187487" />
+          <ConnectorPoint PointX="6.208333333333333" PointY="3.6593432617187491" />
+          <ConnectorPoint PointX="7.03125" PointY="3.6593432617187491" />
+          <ConnectorPoint PointX="7.03125" PointY="6.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="BugTrackerEntityModels.FK_tbl_BugCommentsMapping_tbl_Comments" >
+          <ConnectorPoint PointX="4.875" PointY="5.77064490625" />
+          <ConnectorPoint PointX="6.2968725" PointY="5.77064490625" />
+          <ConnectorPoint PointX="6.2968725" PointY="6.625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BugTrackerEntityModels.tbl_UserType" Width="1.5" PointX="2.5" PointY="8.125" Height="1.7879850260416674" />
+        <AssociationConnector Association="BugTrackerEntityModels.FK_tbl_Users_tbl_UserType" >
+          <ConnectorPoint PointX="2.90625" PointY="8.125" />
+          <ConnectorPoint PointX="2.90625" PointY="3.9153450520833326" />
+          <ConnectorPoint PointX="2.25" PointY="3.9153450520833326" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

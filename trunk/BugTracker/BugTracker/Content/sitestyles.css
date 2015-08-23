@@ -1,0 +1,98 @@
+﻿/* File Created: August 22, 2013 */
+
+*{font-family:Calibri;}
+body{margin:0; padding:0; top:0; left:0; right:0; bottom:0; background-color: #eee; }
+input, select, textarea { font-size:12px; letter-spacing:1px; text-indent:5px;}
+
+/**/
+#wrapper
+{    
+    position:static;
+    margin:0px auto;    
+    -moz-box-shadow: 0px 0px 50px #000;
+	-webkit-box-shadow: 0px 0px 50px #000;
+	box-shadow: 0px 0px 50px #000;
+	zoom: 1;	
+	width:700px;	
+	height:100%;	
+	background-color:#22557f;
+	color:#fff;
+}
+
+/*Page Header*/
+#pgHeader{position:static; width:700px; height: 30px; background-color:#000;}
+#pgHeader img{ height:30px; width:60px; zoom:1; }
+#pgHeader span {display:block; margin-left:300px; margin-top:-30px; padding:0px; font-family:Verdana; font-style:italic; font-variant:small-caps; font-weight:bolder; font-size:large;}
+
+/*Page Content*/
+#pgContent {}
+.small-forms 
+{
+    width:400px; height:auto; margin:30px auto; padding:10px; font-size:12px; color:#000;
+    background-color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;
+}
+.small-forms fieldset{padding:25px;  border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+.small-forms legend
+{
+    font-weight: bold; border:none; text-align:center; color:#085BAC; font-size:16px;
+}
+
+.form-row { width: 100%; font-weight:normal; display:block; margin:5px 0px 5px 0px; }
+.form-row .col1 { width:40%; display:inline-block; vertical-align:middle; font-size:13px; }
+.form-row .col2 { width:55%; display:inline-block; right:0px; vertical-align:middle; }
+.form-row  .field-validation-error {width:98%; display:block; vertical-align:middle; text-align:right; color:red; font-family:Tahoma; font-size:11px;  }
+input.textbox { width:100%; border:1px solid #ddd; }
+input.textbox.valid {  background-color: #D7FADD; border:1px solid green; }
+input.textbox.input-validation-error { background-color:#FAD7DB; border:1px solid red; }
+
+.form-buttons { width:98%; }
+.form-buttons p{text-align:right; margin:0 auto;}
+.form-buttons button
+{
+    border: 1px solid #89c3eb;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    font-weight:bold;
+    vertical-align:middle;
+    width:80px;
+    height:25px;
+    color: #085BAC;
+    cursor:pointer;
+background: rgb(235,241,246); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ViZjFmNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2FiZDNlZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iIzg5YzNlYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkNWViZmIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(235,241,246,1)), color-stop(50%,rgba(171,211,238,1)), color-stop(51%,rgba(137,195,235,1)), color-stop(100%,rgba(213,235,251,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); /* IE6-8 */
+
+}
+.form-buttons button:hover
+{
+    border: 1px solid rgba(181,189,200,1);
+    color:#fff;
+   background: rgb(181,189,200); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I1YmRjOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM2JSIgc3RvcC1jb2xvcj0iIzgyOGM5NSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyODM0M2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(181,189,200,1) 0%, rgba(130,140,149,1) 36%, rgba(40,52,59,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(181,189,200,1)), color-stop(36%,rgba(130,140,149,1)), color-stop(100%,rgba(40,52,59,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=0 ); /* IE6-8 */
+}
+
+
+/*Page Footer*/
+#pgFooter {position: fixed; bottom:0px; width:700px; height:20px;  background-color:#000;}
+#pgFooter p { text-align:center; font-size: 11px; line-height:20px; position:relative; top:-10px;}
+
+
+
+.title{font-size:32px;  font-weight:100;}
+
